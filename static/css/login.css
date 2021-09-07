@@ -1,0 +1,73 @@
+.contact{
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.contact:hover{
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
+}
+.login{
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 20px;
+}
+.login:hover{
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
+    
+}
+#form2,#form3{
+    margin-top:20px;
+    width:470px;
+    margin-left: 40px;
+    
+}
+form.form1{
+    margin-top: 35px;
+    float: right;
+    margin-right: 25px;
+    background-color:#D3D3D3;
+    width:570px;
+    border-radius: 35px;
+    color:black;
+    font-size:20px;
+    height: 497px;
+}
+
+#submit{
+    margin-left: 40px;
+    
+    
+}
+
+
+.body{
+    background-color: skyblue;
+    font-family: 'New Tegomin', serif;
+    font-weight:bold;
+}
+.img{
+    float:left; 
+    margin-left:25px;
+    margin-top: 33px;
+    border-radius: 35px;
+}
+input[type=email],input[type='password']{
+    margin-left: 30px;
+    margin-top:5px;
+}
+div.footer1{
+	width:100%;
+	margin-top: 600px;
+	background-color: white;
+	height: 200px;
+}
+
+address{
+	text-align: center;
+}

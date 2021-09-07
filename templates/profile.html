@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'home.html' %}
+ {% load static %}
+<head>
+{% block content %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap\bootstrap-4.6.0-dist\css\bootstrap.css' %}">
+    <title>Profile</title>
+</head>
+<body class="body">
+<br>
+
+    {% for dt in data %}
+   
+    
+    <div class="content-section">
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{user.userdetail.profile_img.url}}" width='200px' height='200px' id="img2">
+    <div class="media-body">
+      <h2 class="account-heading">Username: {{user.username}}</h2><br>
+      <h4 class="text-secondary">Name: {{user.first_name}}</h4><br>
+      <h4 class="text-secondary">Gender: {{dt.gender}}</h4><br>
+      <h4 class="text-secondary">Age: {{dt.age}}</h4><br>
+      <h4 class="text-secondary">Userpoints: {{dt.userpoints}}</h4>
+
+    </div>
+    {% endfor %}
+  </div>
+  <form action="{% url 'profile' %}" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" id="img" name="myfiles" accept="image/*"><br>
+  <input type="submit" value="Upload Image" disabled>
+  </form>
+  
+</div>
+
+<script>
+$(document).ready(
+    function(){
+        $('input:file').change(
+            function(){
+                if ($(this).val()) {
+                    $('input:submit').attr('disabled',false);
+                    // or, as has been pointed out elsewhere:
+                    // $('input:submit').removeAttr('disabled'); 
+                } 
+            }
+            );
+    });
+</script>
+</body>
+{% endblock %}
+</html>

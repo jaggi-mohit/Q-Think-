@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'home.html' %}
+{% load static %}
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content%}
+    <br><br><br>
+    <tr>
+        {% if data %}
+      <th scope="row" style="background-color:gray;color:white;"> <b class="sub"> Edit Your Answer:</b><br>
+      <form action="{% url 'edit' data %}" method='post' >
+      {% csrf_token %}
+      <textarea placeholder="type your answer here" class="textarea" name='txtarea' style="background-color:lightgray;border-radius:10px;"></textarea>
+      <input type="submit">
+      </form></th>
+      {% endif %}
+      {% if question %}
+      <th scope="row" style="background-color:gray;color:white;"> <b class="sub"> Add Your Question:</b><br>
+      <form action="{% url 'addquestion'  %}" method='post' >
+      {% csrf_token %}
+      <textarea placeholder="type your answer here" class="textarea" name='txtarea' style="background-color:lightgray;border-radius:10px;"></textarea>
+      <input type="submit">
+      </form></th>
+        {% endif %}
+        {% if add %}
+        <th scope="row" style="background-color:gray;color:white;"> <b class="sub">Type Your Answer:</b><br>
+      <form action="{% url 'add' add %}" method='post' >
+      {% csrf_token %}
+      <textarea placeholder="type your answer here" class="textarea" name='txtarea' style="background-color:lightgray;border-radius:10px;"></textarea>
+      <input type="submit">
+      </form></th>
+      {% endif %}
+    
+      
+    </tr>
+     {% endblock %}
+</body>
+</html>

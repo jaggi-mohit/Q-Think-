@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}  
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap\bootstrap-4.6.0-dist\css\bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap" rel="stylesheet">
+   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>SignUp</title>
+</head>
+<body class="body">
+    <nav class="navbar navbar-light" style="background-color: lightgray;" >
+        <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+        <img src="{% static 'images/logo.png' %}" alt="" width="100" height="80" class="d-inline-block align-text-top">
+          </a>
+       <form class="form-inline">
+       <a href ="login" class="login"><i class="fa fa-sign-in" aria-hidden="true" style="color:black"></i> Login </a>
+         
+         
+
+        <!--
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        -->
+      </form>  
+        </div>
+      </nav>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert" id="h1">
+  <strong>{{message}}</strong> 
+  
+    </div>
+    {% endfor %}
+      {% endif %}
+      <div class="outer">
+      <img src="{% static 'images/thnk.jpg' %}" height="533px" width="700px" class="img">
+      <form class="form1" action="{% url 'signup'%}" method='post'>
+      {% csrf_token %}
+      <h4 align="center"><b>SignUp User!</b></h4>
+    <div class="form-group row" id="form">
+    <label for="inputname" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputname" name="Fname" required="">
+    </div>
+  </div>
+  <div class="form-group row" id="form1">
+    <label for="inputage" class="col-sm-2 col-form-label">Age</label>
+    <div class="col-sm-10">
+      <input type="number" class="form-control" id="inputage" min="0" name="age" required="">
+    </div>
+  </div>
+  <div class="form-group row" id="form2">
+    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail3" name="email" required="">
+    </div>
+  </div>
+  <div class="form-group row" id="form3">
+    <label for="inputPassword3" class="col-sm-2 col-form-label" >Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword3" name="passw" required="">
+    </div>
+    </div>
+    <div class="form-group row" id="form4">
+    <label for="confirmpass" class="col-sm-2 col-form-label">Confirm Password</label>
+    
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="confirmpass">
+    </div>
+    <p id="CheckPasswordMatch"></p>
+  </div>
+  <fieldset class="form-group row" id="radio">
+    <legend class="col-form-label col-sm-2 float-sm-left pt-0">Gender</legend>
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="Male" checked>
+        <label class="form-check-label" for="gridRadios1">
+         Male
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Female">
+        <label class="form-check-label" for="gridRadios2">
+          Female
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="Other" >
+        <label class="form-check-label" for="gridRadios3">
+         Other
+        </label>
+      </div>
+    </div>
+  </fieldset>
+  
+  <div class="form-group row" id="submit">
+    <div class="col-sm-10">
+    
+      <button type="submit" class="btn btn-primary" id="submit1">Sign Up</button>
+    </div>
+  </div>
+</form>
+<br>
+
+<div class="footer1"><br><br>
+	<address>
+	<font size="5px">Email Us: query@QThink.com</font><br>
+	<font size="3px">D-58, Red FM Road, Sector 2, C Block, Noida, Uttar Pradesh 201301,India</font><br><br><br>
+	<b>All Rights Reserved 2021</b>
+	</address>
+	
+</div>
+</div>
+<script>
+$(document).ready(function() {
+
+
+
+ 
+    
+	function checkPasswordMatch() {
+		var confirmPassword = $("#confirmpass").val();
+        var password = $("#inputPassword3").val();
+        
+        if (password != confirmPassword ) {
+            $("#CheckPasswordMatch").html("<p style='color:red;font-size:13px;margin-left:20px;'>Passwords does not match!</p>")
+			$('#submit1').attr("disabled", true);
+		}
+        else{
+            $("#CheckPasswordMatch").html("<p style='color:green;font-size:13px;margin-left:20px;'>Passwords match.</p>")
+			$('#submit1').attr("disabled", false);
+			}
+    }
+   
+       $("#confirmpass").keyup(checkPasswordMatch);
+	   $("#inputPassword3").keyup(checkPasswordMatch);
+	
+				  
+		
+				  
+				
+				   });
+				   
+
+</script>
+
+    
+</body>
+</html>
